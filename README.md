@@ -29,7 +29,7 @@ Add it in your root build.gradle at the end of repositories:
 Step 2. Add the dependency
 
 	dependencies {
-	        implementation 'com.github.dbchar:zoomapi-java:0.0.1'
+	        implementation 'com.github.dbchar:zoomapi-java:0.0.2'
 	}
 
 
@@ -49,7 +49,7 @@ Step 2. Add the dependency
 	<dependency>
 	    <groupId>com.github.dbchar</groupId>
 	    <artifactId>zoomapi-java</artifactId>
-	    <version>0.0.1</version>
+	    <version>0.0.2</version>
 	</dependency>
 
 ## Usage
