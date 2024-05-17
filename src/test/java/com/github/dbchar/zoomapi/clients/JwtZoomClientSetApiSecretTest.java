@@ -79,7 +79,9 @@ Validation:
 */
 
 // ********RoostGPT********
+
 package com.github.dbchar.zoomapi.clients;
+
 import com.github.dbchar.zoomapi.components.BaseComponent;
 import org.junit.Before;
 import org.junit.Test;
@@ -90,6 +92,7 @@ import static org.mockito.Mockito.*;
 public class JwtZoomClientSetApiSecretTest {
     private JwtZoomClient jwtZoomClient;
     private List<BaseComponent> componentsMock;
+
     @Before
     public void setUp() {
         componentsMock = Mockito.mock(List.class);
@@ -97,26 +100,31 @@ public class JwtZoomClientSetApiSecretTest {
         doNothing().when(jwtZoomClient).refreshJwtToken();
         jwtZoomClient.components = componentsMock;
     }
+
     @Test
     public void setValidApiSecretShouldRefreshToken() {
         jwtZoomClient.setApiSecret("newValidApiSecret");
         verify(jwtZoomClient, times(1)).refreshJwtToken();
     }
+
     @Test
     public void setNullApiSecretShouldHandleGracefully() {
         jwtZoomClient.setApiSecret(null);
         verify(jwtZoomClient, times(0)).refreshJwtToken();
     }
+
     @Test
     public void setEmptyApiSecretShouldNotRefreshToken() {
         jwtZoomClient.setApiSecret("");
         verify(jwtZoomClient, times(0)).refreshJwtToken();
     }
+
     @Test
     public void setApiSecretWithWhitespaceShouldRefreshToken() {
         jwtZoomClient.setApiSecret("  newApiSecret  ");
         verify(jwtZoomClient, times(1)).refreshJwtToken();
     }
+
     @Test
     public void setApiSecretWhenChangedShouldRefreshToken() {
         jwtZoomClient.setApiSecret("initialApiSecret");
@@ -124,6 +132,7 @@ public class JwtZoomClientSetApiSecretTest {
         jwtZoomClient.setApiSecret("newApiSecret");
         verify(jwtZoomClient, times(2)).refreshJwtToken();
     }
+
     @Test
     public void setApiSecretWhenUnchangedShouldNotRefreshToken() {
         jwtZoomClient.setApiSecret("sameApiSecret");
@@ -131,4 +140,9 @@ public class JwtZoomClientSetApiSecretTest {
         jwtZoomClient.setApiSecret("sameApiSecret");
         verify(jwtZoomClient, times(1)).refreshJwtToken();
     }
+    
+    // Error: 'gradle' is not recognized as an internal or external command, operable program or batch file.
+    // This error is unrelated to the test cases themselves. It indicates a problem with the environment setup.
+    // Gradle is not installed or not added to the PATH environment variable on the system where the tests are being run.
+    // To resolve this error, ensure that Gradle is installed and correctly configured in the system's PATH.
 }
